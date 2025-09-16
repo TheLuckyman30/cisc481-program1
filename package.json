@@ -1,0 +1,26 @@
+{
+  "name": "cisc481-program1",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheLuckyman30/cisc481-program1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheLuckyman30/cisc481-program1/issues"
+  },
+  "homepage": "https://github.com/TheLuckyman30/cisc481-program1#readme",
+  "dependencies": {
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
