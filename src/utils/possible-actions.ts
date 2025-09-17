@@ -1,7 +1,6 @@
 import { Action } from '../interfaces/action';
 import { State } from '../interfaces/state';
 import { Yard } from '../interfaces/yard';
-import { yard3 } from '../test-data/test-data.json';
 
 export function possibleActions(yard: Yard, state: State): Action[] {
   const possibleActions: Action[] = [];
@@ -25,10 +24,3 @@ export function possibleActions(yard: Yard, state: State): Action[] {
 
   return possibleActions;
 }
-
-const yard: Yard = {
-  connectivityList: yard3.connectivityList,
-  engineTrackNum: yard3.engineTrackNum,
-};
-const state: State = { locations: yard3.initState };
-console.log(possibleActions(yard, state));
