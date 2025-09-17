@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "possible": "tsx ./src/utils/possible-actions.ts",
-    "result": "tsx ./src/utils/result.ts"
+    "result": "tsx ./src/utils/result.ts",
+    "expand": "tsx ./src/utils/expand.ts"
   },
   "dependencies": {
     "tsx": "^4.20.5",
