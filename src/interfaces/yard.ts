@@ -1,3 +1,4 @@
 export interface Yard {
-  trackConnections: number[][];
+  connectivityList: number[][];
+  engineTrackNum: number;
 }

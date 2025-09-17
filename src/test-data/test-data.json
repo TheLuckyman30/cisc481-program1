@@ -1,9 +1,10 @@
 {
   "yard3": {
-    "yard": [
+    "connectivityList": [
       [1, 2],
       [1, 3]
     ],
+    "engineTrackNum": 1,
     "initState": [["*"], ["a"], ["b"]],
     "goalState": [["*", "a", "b"], [], []]
   }
