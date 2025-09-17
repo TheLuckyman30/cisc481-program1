@@ -4,9 +4,8 @@ import { Yard } from '../interfaces/yard';
 
 export function possibleActions(yard: Yard, state: State): Action[] {
   const possibleActions: Action[] = [];
-  const allowedConnections = yard.connectivityList.filter((list) =>
-    list.includes(yard.engineTrackNum)
-  );
+  const engineTrackNum = state.locations.findIndex((location) => location.includes('*')) + 1;
+  const allowedConnections = yard.connectivityList.filter((list) => list.includes(engineTrackNum));
 
   for (const connection of allowedConnections) {
     const firstTrack = connection[0];

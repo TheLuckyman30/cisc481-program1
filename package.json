@@ -7,7 +7,8 @@
   "scripts": {
     "possible": "tsx ./src/utils/possible-actions.ts",
     "result": "tsx ./src/utils/result.ts",
-    "expand": "tsx ./src/utils/expand.ts"
+    "expand": "tsx ./src/utils/expand.ts",
+    "main": "tsx ./src/main.ts"
   },
   "dependencies": {
     "tsx": "^4.20.5",
