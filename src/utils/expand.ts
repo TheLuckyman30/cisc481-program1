@@ -1,11 +1,11 @@
-import { Action } from '../interfaces/action';
 import { State } from '../interfaces/state';
+import { StateAndAction } from '../interfaces/state-action';
 import { Yard } from '../interfaces/yard';
 import { possibleActions } from './possible-actions';
 import { result } from './result';
 
-export function expand(state: State, yard: Yard): { state: State; action: Action }[] {
-  const reachableStates: { state: State; action: Action }[] = [];
+export function expand(state: State, yard: Yard): StateAndAction[] {
+  const reachableStates: StateAndAction[] = [];
   const actions = possibleActions(yard, state);
 
   for (const action of actions) {
