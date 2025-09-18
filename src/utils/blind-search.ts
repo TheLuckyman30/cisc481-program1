@@ -44,5 +44,7 @@ export function blindTreeSearch(yard: Yard, initState: State, goalState: State):
     actionPath = finalNode.actionPath;
   }
 
+  console.dir(finalNode?.state, { depth: null });
+
   return actionPath;
 }
