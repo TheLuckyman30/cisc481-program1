@@ -5,6 +5,7 @@ import { HeuristicNode } from '../interfaces/heuristic-node';
 import { StateAndAction } from '../interfaces/state-action';
 import { expand } from './expand';
 import { goalTest } from './goal-test';
+import { PriorityQueue } from '../classes/priority-queue';
 
 function calculateHeuristicValue(currentState: State, goalState: State): number {
   let misplacedCars = 0;
@@ -26,7 +27,7 @@ export function heuristicTreeSearch(yard: Yard, initState: State, goalState: Sta
   let goalHasBeenFound = false;
   let finalNode: HeuristicNode | null = null;
   let actionPath: Action[] = [];
-  const fringe: HeuristicNode[] = [];
+  const fringe: PriorityQueue<HeuristicNode> = new PriorityQueue<HeuristicNode>();
   const rootHeuristicValue = calculateHeuristicValue(initState, goalState);
   const rootNode: HeuristicNode = {
     state: initState,
@@ -36,29 +37,26 @@ export function heuristicTreeSearch(yard: Yard, initState: State, goalState: Sta
     actionPath: [],
   };
 
-  fringe.push(rootNode);
+  fringe.insert(rootNode, rootNode.fValue);
 
-  while (fringe.length && !goalHasBeenFound) {
-    const currentNode = fringe.splice(0, 1)[0];
-    if (goalTest(currentNode.state, goalState)) {
-      finalNode = currentNode;
-      goalHasBeenFound = true;
-    } else {
-      const childStates: StateAndAction[] = expand(currentNode.state, yard);
-      for (const childState of childStates) {
-        const heuristicValue = calculateHeuristicValue(childState.state, goalState);
-        const newNode: HeuristicNode = {
-          state: childState.state,
-          heuristicValue: heuristicValue,
-          totalPathValue: currentNode.totalPathValue + 1,
-          fValue: currentNode.totalPathValue + 1 + heuristicValue,
-          actionPath: [...currentNode.actionPath, childState.action],
-        };
-        const index = fringe.findIndex((node) => node.fValue >= newNode.fValue);
-        if (index < 0) {
-          fringe.push(newNode);
-        } else {
-          fringe.splice(index, 0, newNode);
+  while (!fringe.isEmpty() && !goalHasBeenFound) {
+    const currentNode = fringe.pop();
+    if (currentNode) {
+      if (goalTest(currentNode.state, goalState)) {
+        finalNode = currentNode;
+        goalHasBeenFound = true;
+      } else {
+        const childStates: StateAndAction[] = expand(currentNode.state, yard);
+        for (const childState of childStates) {
+          const heuristicValue = calculateHeuristicValue(childState.state, goalState);
+          const newNode: HeuristicNode = {
+            state: childState.state,
+            heuristicValue: heuristicValue,
+            totalPathValue: currentNode.totalPathValue + 1,
+            fValue: currentNode.totalPathValue + 1 + heuristicValue,
+            actionPath: [...currentNode.actionPath, childState.action],
+          };
+          fringe.insert(newNode, newNode.fValue);
         }
       }
     }
