@@ -8,6 +8,14 @@ import { goalTest } from './goal-test';
 import { PriorityQueue } from '../classes/priority-queue';
 import { calculateHeuristicValue } from './calculate-heuristic';
 
+/**
+ * This function uses the A* algorithm to find the correct action path to get from the inputed initial state to the inputed goal state
+ *
+ * @param {Yard} yard A yard object that contains a list of all the possible track connections
+ * @param {State} initState The inital state of the problem
+ * @param {State} goalState The goal state of the problem
+ * @returns {Action[]} An array containing the correct action path to get from the initial state to the goal state
+ */
 export function heuristicTreeSearch(yard: Yard, initState: State, goalState: State): Action[] {
   let goalHasBeenFound = false;
   let finalNode: HeuristicNode | null = null;

@@ -13,10 +13,10 @@ import { goalTest } from './goal-test';
  * I chose to use use this algorithm since it is the uninformed search algorithm when all costs are the same.
  * This is an optimal solution since it will check every level of the tree for a goal state, but it will have a better space complexity than BFS since it will still check the deepest nodes first like DFS
  *
- * @param {Yard} yard
- * @param {State} initState
- * @param {State} goalState
- * @returns
+ * @param {Yard} yard A yard object that contains a list of all the possible track connections
+ * @param {State} initState The inital state of the problem
+ * @param {State} goalState The goal state of the problem
+ * @returns {Action[]} An array containing the correct action path to get from the initial state to the goal state
  */
 export function blindTreeSearch(yard: Yard, initState: State, goalState: State): Action[] {
   let depthLimit = 0;
