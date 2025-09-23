@@ -7,6 +7,12 @@ interface ImportedYard {
   goalState: string[][];
 }
 
+/**
+ * This function is to help parse the inputed data
+ *
+ * @param {ImportedYard} importedYard This will be the problem you want to solve, contains the yard connectivty list, initState, and goalState
+ * @returns {[Yard, State, State]} An array containing the formatted and object versions of the connectivity list, initState, and goalState
+ */
 export function dataParser(importedYard: ImportedYard): [Yard, State, State] {
   const yard: Yard = { connectivityList: importedYard.connectivityList };
 

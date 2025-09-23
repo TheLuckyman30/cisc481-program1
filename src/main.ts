@@ -3,10 +3,10 @@ import { blindTreeSearch } from './utils/blind-search';
 import { dataParser } from './utils/data-parser';
 import { heuristicTreeSearch } from './utils/heuristic-search';
 
-for (const importedYard of yards) {
-  const [yard, initState, goalState] = dataParser(importedYard);
-  console.log(blindTreeSearch(yard, initState, goalState));
-}
+// for (const importedYard of yards) {
+//   const [yard, initState, goalState] = dataParser(importedYard);
+//   console.log(blindTreeSearch(yard, initState, goalState));
+// }
 
 console.log('\nNow performing a heuristic search\n');
 

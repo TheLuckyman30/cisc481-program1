@@ -1,5 +1,12 @@
 import { State } from '../interfaces/state';
 
+/**
+ * This function simply chekcs the current state to see if it matches the goal state
+ *
+ * @param {State} currentState The current state of the problem
+ * @param {State} goalState The goal state of the problem
+ * @returns {boolean} Whether or not the given state is the goal state
+ */
 export function goalTest(currentState: State, goalState: State): boolean {
   let isEqual = true;
 

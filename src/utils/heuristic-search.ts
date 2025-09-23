@@ -6,22 +6,7 @@ import { StateAndAction } from '../interfaces/state-action';
 import { expand } from './expand';
 import { goalTest } from './goal-test';
 import { PriorityQueue } from '../classes/priority-queue';
-
-function calculateHeuristicValue(currentState: State, goalState: State): number {
-  let misplacedCars = 0;
-  for (let i = 0; i < currentState.locations.length; i++) {
-    for (let j = 0; j < currentState.locations[i].length; j++) {
-      if (goalState.locations[i][j] != null) {
-        if (goalState.locations[i][j] != currentState.locations[i][j]) {
-          misplacedCars++;
-        }
-      } else {
-        misplacedCars++;
-      }
-    }
-  }
-  return misplacedCars;
-}
+import { calculateHeuristicValue } from './calculate-heuristic';
 
 export function heuristicTreeSearch(yard: Yard, initState: State, goalState: State): Action[] {
   let goalHasBeenFound = false;
@@ -60,8 +45,6 @@ export function heuristicTreeSearch(yard: Yard, initState: State, goalState: Sta
         }
       }
     }
-    // console.dir(currentNode, { depth: null });
-    //console.dir(fringe, { depth: null });
   }
 
   if (finalNode) {

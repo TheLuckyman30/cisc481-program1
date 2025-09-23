@@ -1,6 +1,13 @@
 import { Action } from '../interfaces/action';
 import { State } from '../interfaces/state';
 
+/**
+ * This function will calculate the resulting state from the given state and action
+ *
+ * @param {Action} action The valid action to be taken from the given state
+ * @param {State} state The state that you want to find the child state for
+ * @returns {State} The child state based on the given action
+ */
 export function result(action: Action, state: State): State {
   const newState: State = {
     locations: state.locations.map((location) => [...location]),
