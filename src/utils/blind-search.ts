@@ -23,27 +23,29 @@ export function blindTreeSearch(yard: Yard, initState: State, goalState: State):
   let goalHasBeenFound = false;
   let finalNode: Node | null = null;
   let actionPath: Action[] = [];
+  const rootNode: Node = { state: initState, nodeLevel: 0, actionPath: [] };
 
   while (!goalHasBeenFound) {
-    let fringe: Node[] = [];
-    const rootNode: Node = { state: initState, nodeLevel: 0, actionPath: [] };
+    const fringe: Node[] = [];
     fringe.push(rootNode);
 
     while (fringe.length) {
-      const currentNode = fringe.splice(0, 1)[0];
-      if (goalTest(currentNode.state, goalState)) {
-        finalNode = currentNode;
-        goalHasBeenFound = true;
-      } else {
-        if (currentNode.nodeLevel <= depthLimit) {
-          const childStates: StateAndAction[] = expand(currentNode.state, yard);
-          for (const childState of childStates) {
-            const newNode: Node = {
-              state: childState.state,
-              nodeLevel: currentNode.nodeLevel + 1,
-              actionPath: [...currentNode.actionPath, childState.action],
-            };
-            fringe = [newNode, ...fringe];
+      const currentNode = fringe.pop();
+      if (currentNode) {
+        if (goalTest(currentNode.state, goalState)) {
+          finalNode = currentNode;
+          goalHasBeenFound = true;
+        } else {
+          if (currentNode.nodeLevel <= depthLimit) {
+            const childStates: StateAndAction[] = expand(currentNode.state, yard);
+            for (const childState of childStates) {
+              const newNode: Node = {
+                state: childState.state,
+                nodeLevel: currentNode.nodeLevel + 1,
+                actionPath: [...currentNode.actionPath, childState.action],
+              };
+              fringe.push(newNode);
+            }
           }
         }
       }
