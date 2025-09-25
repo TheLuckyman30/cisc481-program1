@@ -2,12 +2,8 @@
   "name": "cisc481-program1",
   "private": true,
   "version": "0.0.0",
-  "description": "",
   "type": "module",
   "scripts": {
-    "possible": "tsx ./src/utils/possible-actions.ts",
-    "result": "tsx ./src/utils/result.ts",
-    "expand": "tsx ./src/utils/expand.ts",
     "main": "tsx ./src/main.ts"
   },
   "devDependencies": {
