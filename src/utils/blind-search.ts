@@ -17,8 +17,8 @@ import { goalTest } from './goal-test';
  * @returns {Action[]} An array containing the correct action path to get from the initial state to the goal state
  */
 export function blindTreeSearch(yard: Yard, initState: State, goalState: State): Action[] {
-  let depthLimit = 0;
-  let goalHasBeenFound = false;
+  let depthLimit: number = 0;
+  let goalHasBeenFound: boolean = false;
   let finalNode: Node | null = null;
   let actionPath: Action[] = [];
   const rootNode: Node = { state: initState, nodeLevel: 0, actionPath: [] };

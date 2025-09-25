@@ -18,8 +18,8 @@ import { calculateHeuristicValue } from './calculate-heuristic';
  * @returns {Action[]} An array containing the correct action path to get from the initial state to the goal state
  */
 export function heuristicTreeSearch(yard: Yard, initState: State, goalState: State): Action[] {
-  let fValueLimit;
-  let goalHasBeenFound = false;
+  let fValueLimit: number;
+  let goalHasBeenFound: boolean = false;
   let finalNode: HeuristicNode | null = null;
   let actionPath: Action[] = [];
   const rootHeuristicValue = calculateHeuristicValue(initState, goalState);

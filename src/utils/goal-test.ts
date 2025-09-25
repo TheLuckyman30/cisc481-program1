@@ -8,7 +8,7 @@ import { State } from '../interfaces/state';
  * @returns {boolean} Whether or not the given state is the goal state
  */
 export function goalTest(currentState: State, goalState: State): boolean {
-  let isEqual = true;
+  let isEqual: boolean = true;
 
   if (currentState.locations.length === goalState.locations.length) {
     for (let i = 0; i < currentState.locations.length && isEqual; i++) {
