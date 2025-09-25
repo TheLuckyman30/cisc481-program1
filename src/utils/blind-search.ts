@@ -9,9 +9,7 @@ import { expand } from './expand';
 import { goalTest } from './goal-test';
 
 /**
- * This function uses the iterative deepening algorithm to find the correct action path to get from the inputed initial state to the inputed goal state
- * I chose to use use this algorithm since it is the uninformed search algorithm when all costs are the same.
- * This is an optimal solution since it will check every level of the tree for a goal state, but it will have a better space complexity than BFS since it will still check the deepest nodes first like DFS
+ * This function uses the iterative deepening algorithm to find the correct action path to get from the given initial state to the given goal state
  *
  * @param {Yard} yard A yard object that contains a list of all the possible track connections
  * @param {State} initState The inital state of the problem

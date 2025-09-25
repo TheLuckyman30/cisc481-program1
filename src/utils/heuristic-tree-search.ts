@@ -1,3 +1,5 @@
+// Problem 6
+
 import { Action } from '../interfaces/action';
 import { State } from '../interfaces/state';
 import { Yard } from '../interfaces/yard';
@@ -8,7 +10,7 @@ import { goalTest } from './goal-test';
 import { calculateHeuristicValue } from './calculate-heuristic';
 
 /**
- * This function uses the IDA* algorithm to find the correct action path to get from the inputed initial state to the inputed goal state
+ * This function uses the IDA* algorithm to implement a heuristic tree search and find the correct action path to get from the given initial state to the given goal state
  *
  * @param {Yard} yard A yard object that contains a list of all the possible track connections
  * @param {State} initState The inital state of the problem
