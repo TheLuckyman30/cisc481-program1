@@ -26,21 +26,30 @@ async function main(): Promise<void> {
 
       for (const importedYard of yards) {
         const [yard, initState, goalState] = dataParser(importedYard);
+        console.time('Total Runitme');
         console.log(blindTreeSearch(yard, initState, goalState));
+        console.timeEnd('Total Runitme');
+        console.log('\n');
       }
     } else if (option === '2') {
       console.log('\nPerforming a heuristic tree search\n');
 
       for (const importedYard of yards) {
         const [yard, initState, goalState] = dataParser(importedYard);
+        console.time('Total Runitme');
         console.log(heuristicTreeSearch(yard, initState, goalState));
+        console.timeEnd('Total Runitme');
+        console.log('\n');
       }
     } else if (option === '3') {
       console.log('\nNow performing a heuristic graph search\n');
 
       for (const importedYard of yards) {
         const [yard, initState, goalState] = dataParser(importedYard);
+        console.time('Total Runitme');
         console.log(heuristicGraphSearch(yard, initState, goalState));
+        console.timeEnd('Total Runitme');
+        console.log('\n');
       }
     }
   }

@@ -23,6 +23,7 @@ export function heuristicGraphSearch(yard: Yard, initState: State, goalState: St
   let goalHasBeenFound: boolean = false;
   let finalNode: HeuristicNode | null = null;
   let actionPath: Action[] = [];
+  let numNodesExpanded: number = 0;
   const rootHeuristicValue = calculateHeuristicValue(initState, goalState);
   const rootNode: HeuristicNode = {
     state: initState,
@@ -39,6 +40,7 @@ export function heuristicGraphSearch(yard: Yard, initState: State, goalState: St
 
   while (!fringe.isEmpty() && !goalHasBeenFound) {
     const currentNode = fringe.pop();
+    numNodesExpanded++;
     if (currentNode) {
       if (goalTest(currentNode.state, goalState)) {
         finalNode = currentNode;
@@ -66,7 +68,7 @@ export function heuristicGraphSearch(yard: Yard, initState: State, goalState: St
   if (finalNode) {
     actionPath = finalNode.actionPath;
   }
-
+  console.log('Total number of nodes expanded: ', numNodesExpanded);
   console.dir(finalNode?.state, { depth: null });
 
   return actionPath;

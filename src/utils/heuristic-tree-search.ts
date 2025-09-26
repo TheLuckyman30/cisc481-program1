@@ -22,6 +22,7 @@ export function heuristicTreeSearch(yard: Yard, initState: State, goalState: Sta
   let goalHasBeenFound: boolean = false;
   let finalNode: HeuristicNode | null = null;
   let actionPath: Action[] = [];
+  let numNodesExpanded: number = 0;
   const rootHeuristicValue = calculateHeuristicValue(initState, goalState);
   const rootNode: HeuristicNode = {
     state: initState,
@@ -33,12 +34,14 @@ export function heuristicTreeSearch(yard: Yard, initState: State, goalState: Sta
   fValueLimit = rootNode.fValue;
 
   while (!goalHasBeenFound) {
+    numNodesExpanded = 0;
     let minimumNewFValue = -1;
     const fringe: HeuristicNode[] = [];
     fringe.push(rootNode);
 
     while (fringe.length) {
       const currentNode = fringe.pop();
+      numNodesExpanded++;
       if (currentNode) {
         if (goalTest(currentNode.state, goalState)) {
           finalNode = currentNode;
@@ -73,6 +76,7 @@ export function heuristicTreeSearch(yard: Yard, initState: State, goalState: Sta
     actionPath = finalNode.actionPath;
   }
 
+  console.log('Total number of nodes expanded: ', numNodesExpanded);
   console.dir(finalNode?.state, { depth: null });
 
   return actionPath;

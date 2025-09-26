@@ -21,14 +21,17 @@ export function blindTreeSearch(yard: Yard, initState: State, goalState: State):
   let goalHasBeenFound: boolean = false;
   let finalNode: Node | null = null;
   let actionPath: Action[] = [];
+  let numNodesExpanded: number = 0;
   const rootNode: Node = { state: initState, nodeLevel: 0, actionPath: [] };
 
   while (!goalHasBeenFound) {
+    numNodesExpanded = 0;
     const fringe: Node[] = [];
     fringe.push(rootNode);
 
     while (fringe.length) {
       const currentNode = fringe.pop();
+      numNodesExpanded++;
       if (currentNode) {
         if (goalTest(currentNode.state, goalState)) {
           finalNode = currentNode;
@@ -56,6 +59,7 @@ export function blindTreeSearch(yard: Yard, initState: State, goalState: State):
     actionPath = finalNode.actionPath;
   }
 
+  console.log('Total number of nodes expanded: ', numNodesExpanded);
   console.dir(finalNode?.state, { depth: null });
 
   return actionPath;
