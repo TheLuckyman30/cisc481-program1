@@ -11,10 +11,10 @@ import { result } from './result';
  *
  * @param {State} state The state that you want to find all possible child states for
  * @param {Yard} yard A yard object that contains a list of all the possible track connections
- * @returns {StateAndAction} An array of objects that contain child states of the inputed state aswell as the actions needed to get there
+ * @returns {StateAndAction} An array of objects that contain child states of the given state aswell as the action needed to get there
  */
 export function expand(state: State, yard: Yard): StateAndAction[] {
-  const reachableStates: StateAndAction[] = [];
+  const reachableStates: StateAndAction[] = []; // Im storing both the state and action to make it a little bit easier to keep track of the final action path
   const actions = possibleActions(yard, state);
 
   for (const action of actions) {

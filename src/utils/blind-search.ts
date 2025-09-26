@@ -59,6 +59,7 @@ export function blindTreeSearch(yard: Yard, initState: State, goalState: State):
     actionPath = finalNode.actionPath;
   }
 
+  console.timeEnd('Total Runitme');
   console.log('Total number of nodes expanded: ', numNodesExpanded);
   console.dir(finalNode?.state, { depth: null });
 

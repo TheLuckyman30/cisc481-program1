@@ -16,6 +16,7 @@ interface ImportedYard {
 export function dataParser(importedYard: ImportedYard): [Yard, State, State] {
   const yard: Yard = { connectivityList: importedYard.connectivityList };
 
+  // This is just to track where the engine is in each state. This variable gets updated in the result function
   const initEngineTrackNum =
     importedYard.initState.findIndex((location) => location.includes('*')) + 1;
   const goalEngineTrackNum =

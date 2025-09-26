@@ -1,3 +1,5 @@
+// Problem 2
+
 import { Action } from '../interfaces/action';
 import { State } from '../interfaces/state';
 
@@ -17,17 +19,17 @@ export function result(action: Action, state: State): State {
 
   if (action.direction === 'left') {
     const fromTrackArray = newState.locations[action.fromTrack - 1];
-    movedCar = fromTrackArray.splice(0, 1)[0];
+    movedCar = fromTrackArray.splice(0, 1)[0]; // Removes from the front (left most car) of the source track
 
     newState.locations[action.fromTrack - 1] = fromTrackArray;
-    newState.locations[action.toTrack - 1].push(movedCar);
+    newState.locations[action.toTrack - 1].push(movedCar); // Adds to the back (right most car) of the destination track
   } else {
     const fromTrackArray = newState.locations[action.fromTrack - 1];
     const toTrackArray = newState.locations[action.toTrack - 1];
-    movedCar = fromTrackArray.splice(fromTrackArray.length - 1, 1)[0];
+    movedCar = fromTrackArray.splice(fromTrackArray.length - 1, 1)[0]; // Removes from the back (right most car) of the source track
 
     newState.locations[action.fromTrack - 1] = fromTrackArray;
-    newState.locations[action.toTrack - 1] = [movedCar, ...toTrackArray];
+    newState.locations[action.toTrack - 1] = [movedCar, ...toTrackArray]; // Adds to the front (left most car) of the destination track
   }
 
   if (movedCar === '*') {
